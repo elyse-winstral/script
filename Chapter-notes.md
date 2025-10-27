@@ -27,3 +27,7 @@ $$
 for each Borel $g$ such that $g(X) \in L^2$.
 
 
+### Notebook Copilot compatability check:
+Explore the [notebook](https://elyse-winstral.github.io/script/notebook.html)
+
+
