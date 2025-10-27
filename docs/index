@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Project Pages</title>
+</head>
+<body>
+  <h1>Welcome — Project Pages</h1>
+  <p>Open either page below:</p>
+  <ul>
+    <li><a href="notebook.html">Page 1</a></li>
+    <li><a href="notebook2.html">Page 2</a></li>
+  </ul>
+
+  <p>Direct URLs (after Pages is enabled):</p>
+  <ul>
+    <li><code>https://elyse-winstral.github.io/script/page1.html</code></li>
+    <li><code>https://elyse-winstral.github.io/script/page2.html</code></li>
+  </ul>
+</body>
+</html>
