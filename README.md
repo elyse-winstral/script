@@ -1,3 +1,3 @@
 # Testing some stuff
 
-check out this [notebook](https://elyse-winstral.github.io/script/docs/notebook2.html)
+check out this [notebook](https://elyse-winstral.github.io/script/notebook2.html)
