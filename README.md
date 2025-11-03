@@ -13,8 +13,8 @@ check out this [notebook](https://elyse-winstral.github.io/script/notebook2.html
 
 ## Major to do: 
 1. Add a Github tutorial for the students 
-    1.1 Create an account/ link account with ETH account
-    1.2 Request GitHub Education access via ETH 
-    1.3 Script navigation / using copilot in conjunction with script
-    1.4 (Use in vsc)
+    1. Create an account/ link account with ETH account
+    2. Request GitHub Education access via ETH 
+    3. Script navigation / using copilot in conjunction with script
+    4. (Use in vsc)
 2. 
