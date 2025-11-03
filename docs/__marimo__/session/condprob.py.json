@@ -1,0 +1,47 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.17.2"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "86fda00b28b2d66798d38db592686c88",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "XnIP",
+      "code_hash": "9d2b1ad5bbc16c44d49116dc213c53f2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='Hbol-0' random-id='213fb8c1-ae60-11de-1c94-133c92f061dd'><marimo-anywidget data-initial-value='{&quot;count&quot;:0}' data-label='null' data-js-url='&quot;./@file/491-21956-b7f0P94h.js&quot;' data-js-hash='&quot;9c4225495f44d29eaba14ec10f399416&quot;' data-css='&quot;&#92;n    button {&#92;n      padding: 5px !important;&#92;n      border-radius: 5px !important;&#92;n      background-color: #f0f0f0 !important;&#92;n&#92;n      &amp;:hover {&#92;n        background-color: lightblue !important;&#92;n        color: white !important;&#92;n      }&#92;n    }&#92;n  &quot;' data-buffer-paths='[]'></marimo-anywidget></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nbAt",
+      "code_hash": "3617253bb57432fe97a9e2f63adbff6b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre style='font-size: 12px'>5</pre>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
