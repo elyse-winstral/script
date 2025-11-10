@@ -30,5 +30,8 @@ Recall the definition of $\sigma$-algebras in the [reference](reference-ex.md#De
 
 ### Notebook Copilot compatability check:
 Explore the [notebook](https://elyse-winstral.github.io/script/notebook.html)
-
+<!--
+Referencing notebook: docs/notebook.py
+Source Notebook GitHub location: https://github.com/elyse-winstral/script/blob/main/docs/notebook.py
+-->
 
