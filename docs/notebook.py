@@ -3,6 +3,22 @@ import marimo
 __generated_with = "0.17.2"
 app = marimo.App(width="medium")
 
+"""
+Conceptual overview:
+--------------------------------------
+This notebook is an interactive visualization of the normal distribution. 
+
+It demonstrates how the two parameters- mean (\mu) and standard deviation (\sigma)- change the probability density function. 
+
+Conceptually:
+- The mean (\mu) represents the expected value aka average value of the distribution. 
+- The standard deviation (\sigma) is the square root of the variance (\sigma^2). It measures how spread out the values are around the mean. If random samples were generated according to this distribution, the variance describes how far these samples are from the mean \mu on average.
+- Smaller std. dev. \sigma means the data is more tightly clustered around the mean
+- Larger std. dev. \sigma means the data is more spread out 
+
+The sliders demonstrate how these changes manifest in the pdf. 
+"""
+
 
 @app.cell
 def _():
