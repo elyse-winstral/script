@@ -3,7 +3,7 @@
 ## Introductory example
 
 Let $A$ and $B$ be two events in $(\Omega, \mathcal{F}, \mathbb{P})$. Let's consider a population: 
-- $\Omega = $ a population ($|\Omega| = n$)
+- $\Omega =$ a population ($|\Omega| = n$)
 - $\mathcal{F} =  2^{\Omega}$
 - $\mathbb{P}(E) = \frac{|E|}{|\Omega|}$, for any event $E \in \mathcal{F}$- the Laplace model
 
@@ -18,9 +18,8 @@ $$
 $$
 
 ## Definitions
-<div id="def:cond-prob"> </div>
 
-> **Conditional Probability:**
+> #### Conditional Probability - Events:
 > Let $A$ and $B$ be two events in $(\Omega, \mathcal{F}, \mathbb{P})$, and $\mathbb{P}(B) > 0$. The conditional probability of $A$ given $B$ is given by 
 >
 >$$
@@ -31,12 +30,12 @@ $$
 >$$
 
 
-<div id="lemma:cond-prob-prob"> </div>
 
-**Lemma:** For every set $B \in \mathcal{F}$ s.t. $\mathbb{P}(B) >0 $, the map $\mathbb{P}(\cdot| B): \mathcal{F} \rightarrow [0,1]$ is a probability mass.  
+#### Lemma: 
+For every set $B \in \mathcal{F}$ s.t. $\mathbb{P}(B) >0 $, the map $\mathbb{P}(\cdot| B): \mathcal{F} \rightarrow [0,1]$ is a probability mass.  
 *Proof:*  $\mathbb{P}(\cdot|B)$ inherits non-negativity, normality and sigma-additivity from $\mathbb{P}$.
 
-The following notebook visualizes an example of [conditional probaility](https://elyse-winstral.github.io/script/cond_prob_widget.html). 
+The following notebook visualizes an example of [conditional probability](https://elyse-winstral.github.io/script/cond_prob_widget.html). 
 <!--
 Referencing notebook: docs/cond_prob_widget.py
 Source Notebook GitHub location: https://github.com/elyse-winstral/script/blob/main/docs/cond_prob_widget.py
@@ -46,9 +45,8 @@ Source Notebook GitHub location: https://github.com/elyse-winstral/script/blob/m
 
 This version of conditional probability is rather static- the probability is a fixed value depending on the event we condition on (here: $B$). Additionally, we can't condition on null sets, i.e. if $Y$ is a continuous r.v., we can't condition on $B = \{Y= y\}$. However, we can condition on all events in $\sigma(Y)$. Conditioning on $\sigma$-algebras allows for variable conditional probabilities. (The conditional probability is itself random)
 
-<div id="def:cond-prob-sig-alg"> </div>
 
-> **Conditional Probability wrt $\sigma$-algebras:**
+> #### Conditional Probability - $\sigma$-algebras:
 > The conditional probability of $A \in \mathcal{F}$ given $\mathcal{G} \subseteq \mathcal{F}$ is the almost surely unique, $\mathcal{G}$-measurable r.v. $\mathbb{P}(A|\mathcal{G})$ s.t.
 > 
 >$$
@@ -58,7 +56,7 @@ This version of conditional probability is rather static- the probability is a f
 >\tag{2}
 >$$
 
-The [conditioned event definition](#def:cond-prob) is simply a special case of this definition where $\mathcal{G} = \{\emptyset, B, B^c, \Omega \}$. We get: 
+The [conditioned event definition](#conditional-probability---events) is simply a special case of this definition where $\mathcal{G} = \{\emptyset, B, B^c, \Omega \}$. We get: 
 
 $$
 \mathbb{P}(A|\mathcal{G}) = \mathbb{P}(A|B)\mathbb{1}_B + \mathbb{P}(A|B^c) \mathbb{1}_{B^c}
@@ -85,11 +83,10 @@ $$
 As mentioned above, we can condition on the $\sigma$-algebra $\sigma(Y)$ for a rv $Y:\Omega \rightarrow \Omega'$. The conditional probability $\mathbb{P}(X \in A|Y) = \mathbb{P}(X \in A|\sigma(Y))$ gives the probability of an outcome of $X$ given prior knowledge of $Y$. The value of this conditional probability depends on the outcome of $Y$, in fact $\mathbb{P}(X \in A|Y)$ is $\sigma(Y)$ measurable and can be understood as a transformation of $Y$. This probability function can be calculated from the joint and marginal probabilities:
 
 
-<div id="def:cond-prob-rvs"> </div>
 
-
+> #### Conditional Probability - Random Variables:
 > For $X$, $Y$, and $(X,Y)$ **discrete random variables** with probability functions $f_X$, $f_Y$, $f_{X,Y}$ the conditional probability is given as: 
-
+>
 >$$
 >\begin{equation}
 > \mathbb{P}(X \in A | Y) = \sum_{x \in A} f_{X|Y}(x,Y) \quad \text{ where }  f_{X|Y}(x,y) := \frac{f_{X,Y}(x,y)}{f_Y(y)}
@@ -132,13 +129,15 @@ Y =
         & C \quad &&\text{for any other outcome}
     \end{align*}
 \end{cases}
-\\
+$$
+
+$$
 \begin{align*}
 \sigma(Y) &= \sigma\{\underbrace{\{1\}}_{Y^{-1}(A)}, \underbrace{\{2,3\}}_{Y^{-1}(B)}, \underbrace{\{4,5,6\}}_{Y^{-1}(C)}, \underbrace{\{1,2,3\} }_{Y^{-1}(A \cup B)}, \underbrace{\{1,4,5,6\} }_{Y^{-1}(A \cup C)}, \underbrace{\{2,3,4,5,6\} }_{Y^{-1}(B \cup C)}, \underbrace{\emptyset}_{Y^{-1}(\emptyset)}, \underbrace{\Omega }_{Y^{-1}(A \cup B \cup C)}\} 
 \\
 &= \{\{1\}, \{2,3\}, \{4,5,6\},\{1,2,3\}, \{1,4,5,6\},\{2,3,4,5,6\}, \emptyset, \Omega\}
 \end{align*} 
-$$\
+$$
 
 &nbsp; &nbsp; Now consider the joint probability function:
 
@@ -182,9 +181,9 @@ $$
 
 ## Properties
 
-<div id="thm:bayes"> </div>
 
-**Bayes Theorem:** For events $A, B \in \mathcal{F}$ with positive probability, it holds:
+#### Bayes Theorem: 
+For events $A, B \in \mathcal{F}$ with positive probability, it holds:
 
 $$
 \begin{equation*}
@@ -198,9 +197,9 @@ $$
 P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{P(A \cap B) P(B)}{P(B)P(A)} = \frac{P(A|B)P(B)}{P(A)}
 $$
 
-<div id="prop:indep"> </div>
 
-**Independence:** Let $A, B$ be independent events. By definition this implies: 
+#### Independence: 
+Let $A, B$ be independent events. By definition this implies: 
 
 $$
 P(A|B) = \frac{P(A \cap B)}{P(B)} = P(A)
@@ -218,9 +217,9 @@ P(X \in A | Y) = P(X \in A), \quad \forall A \in \mathcal{F}
 $$
 
 
-<div id="thm:tot-prob"> </div>
 
-**Law of total probability:** Let $B_1, B_2, \dots, B_n$ be a partition of $\Omega$ (i.e. $B_1, B_2, \dots, B_n \in \mathcal{F}$ and $B_1 \sqcup \dots \sqcup B_n = \Omega$) with $P(B_i) > 0$ for $i = 1, \dots, n$. Then for every $A \in \mathcal{F}$:
+#### Law of total probability: 
+Let $B_1, B_2, \dots, B_n$ be a partition of $\Omega$ (i.e. $B_1, B_2, \dots, B_n \in \mathcal{F}$ and $B_1 \sqcup \dots \sqcup B_n = \Omega$) with $P(B_i) > 0$ for $i = 1, \dots, n$. Then for every $A \in \mathcal{F}$:
 
 $$
 P(A) = \sum_{i=1}^{n}P(A|B_i)P(B_i)
@@ -233,7 +232,7 @@ $$
 P(A) = P(A \cap B_1) + \dots + P(A \cap B_n)
 $$
 
-Applying [(1)](#def:cond-prob), we can write:
+Applying [(1)](#conditional-probability---events), we can write:
 
 $$
 P(A) = P(A|B_1)P(B_1) + \dots + P(A|B_n)P(B_n)
@@ -245,10 +244,15 @@ $$
 A study assessed the accuracy of COVID-19 tests. To do so, they compare test results and actual COVID-19 cases. $T$ is the event of a positive test ($T^c$ means the test was negative), and $C$ is the event of an actual COVID-19 case. Their results are given in the table:
 
 
+<div align="center">
+
 |                              | PCR test | Antigen Test  |
 |------------------------------| ---------| ------------- |
 | Sensitivity $\mathbb{P}(T\|C)$        | 80%      | 41%           |
 | Specificity $\mathbb{P}(T^c \| C^c)$  | 99%      | 98%           |
+
+<\div>
+
 
 **Recap- events vs $\sigma$-algebras:**
 
@@ -256,32 +260,32 @@ Conditioning on events gives real numbers i.e. for a PCR test with events $T$ an
 
 $$
 \begin{align*}
-\mathbb{P}(T|C) = 80\%, \quad \mathbb{P}(T|C^c) = 1 - \mathbb{P}(T^c | C^c) = 1 \%
+\mathbb{P}(T|C) = 0.8, \quad \mathbb{P}(T|C^c) = 1 - \mathbb{P}(T^c | C^c) = 0.01
 \end{align*}
 $$
 
 Conditioning on $\sigma$-algebras gives random variables i.e. let $X = \mathbb{1}_T$ and $Y = \mathbb{1}_C$:
 
 $$
-\mathbb{P}(X = 1| Y) = 80 \% \cdot \mathbb{1}_{1}(Y) + 1\% \cdot \mathbb{1}_{0}(Y)
+\mathbb{P}(X = 1| Y) = 0.8 \cdot \mathbb{1}_{1}(Y) + 0.01 \cdot \mathbb{1}_{0}(Y)
 $$
 
-Now lets imagine we conduct a PCR Test during a wave of COVID-19- $10\%$ of the population is infected ($\mathbb{P}(C) = 10\%$). If the test comes back positive, the patient is sick with a probability of: 
+Now lets imagine we conduct a PCR Test during a wave of COVID-19- 10% of the population is infected ($\mathbb{P}(C) =$ 10%). If the test comes back positive, the patient is sick with a probability of: 
 
 $$
 \begin{align*}
 \mathbb{P}(C|T) &= \frac{\mathbb{P}(T|C)\mathbb{P}(C)}{\mathbb{P}(T)} = \frac{\mathbb{P}(T|C)\mathbb{P}(C)}{\mathbb{P}(T|C)\mathbb{P}(C) + \mathbb{P}(T|C^c)\mathbb{P}(C^c)}&& \\
-&=\frac{0.8 \cdot 0.1}{0.8 \cdot 0.1 + 0.01 \cdot 0.9} &&\approx 90\%
+&=\frac{0.8 \cdot 0.1}{0.8 \cdot 0.1 + 0.01 \cdot 0.9} &&\approx 0.9
 \end{align*}
 $$
 
-However if we were to use an antigen test, the probability would only be around $69\%$.
+However if we were to use an antigen test, the probability would only be around 69\%.
 
 ### Binary symmetric channel
 
 A sender $X$ sends a message-encoded as bits- over a communication channel to a receiver $Y$. The message can't be transmitted noiselessly: there is an $\varepsilon$ chance that the bit is received incorrectly: 
 
-<img src="images/cond-prob-channel-ex.png" alt="drawing" width="800"/>
+<img src="docs/images/cond-prob-channel-ex.png" alt="drawing" width="800"/>
 
 The probability of sending a $1$ is $P(X = 1) = \pi$ and the probability of sending a $0$ is $1-\pi$. What is the probability of receiving $1$ i.e. $P(Y = 1)$?
 
@@ -289,7 +293,6 @@ $$
 \begin{align*}
     P(Y = 1) &= P(Y = 1| X = 1)P(X = 1) + P(Y = 1| X = 0)P(X = 0)\\
     &=(1-\varepsilon)\pi + \varepsilon(1-\pi)
-
 \end{align*}
 $$
 
