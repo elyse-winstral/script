@@ -312,12 +312,10 @@ P(Y_i \in \lbrace-1, 0, 1\rbrace | Y_{i-1} = y) &= P(Y_i \in [-1,1]| Y_{i-1} = y
 & = P(X_i \in [-1 -y, 1 - y])\\
 &= P(X_i = - 1 - y)  + P(X_i = 1-y) = 
     \begin{cases}
-        \begin{align*}
         1 &\text{ if } y = 0 \\
         1 - p &\text{ if } y = 2 \\
         p &\text{ if } y = -2 \\
         0 &\text{ else}
-        \end{align*}
     \end{cases}
 \end{align*}
 $$
@@ -333,7 +331,7 @@ This can also be shown algebraically:
 
 $$
 \begin{align*}
-P(Y_i \in [-1,1]| Y_{i-1} &= y, Y_{i-2} = z) = P(Y_i \in [-1,1]| Y_{i-2}=z, X_{i-1} = y-z) \\
+P(Y_i \in [-1,1]| Y_{i-1} = y, Y_{i-2} = z) &= P(Y_i \in [-1,1]| Y_{i-2}=z, X_{i-1} = y-z) \\
 &= P(Y_{i-2} + X_{i-1} + X_{i} \in [-1,1] | Y_{i-2}=z, X_{i-1} = y-z) \\
 &= P(X_i \in [-1 - Y_{i-2} - X_{i-1}, 1 - Y_{i-2} - X_{i-1}] | Y_{i-2}=z, X_{i-1} = y-z) \\
 &= P(X_i \in [-1 - z -(y-z), 1 - z-(y-z)] | Y_{i-2}=z, X_{i-1} = y-z) \\
