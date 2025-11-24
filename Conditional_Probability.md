@@ -251,7 +251,7 @@ A study assessed the accuracy of COVID-19 tests. To do so, they compare test res
 | Sensitivity $\mathbb{P}(T\|C)$        | 80%      | 41%           |
 | Specificity $\mathbb{P}(T^c \| C^c)$  | 99%      | 98%           |
 
-<\div>
+</div>
 
 
 **Recap- events vs $\sigma$-algebras:**
