@@ -3,7 +3,7 @@
 ## Introductory example
 
 Let $A$ and $B$ be two events in $(\Omega, \mathcal{F}, \mathbb{P})$. Let's consider a population: 
-- $\Omega =$ a population ($|\Omega| = n$)
+- $\Omega =$ a population ($|\Omega| = N$)
 - $\mathcal{F} =  2^{\Omega}$
 - $\mathbb{P}(E) = \frac{|E|}{|\Omega|}$, for any event $E \in \mathcal{F}$- the Laplace model
 
@@ -32,7 +32,7 @@ $$
 
 
 #### Lemma: 
-For every set $B \in \mathcal{F}$ s.t. $\mathbb{P}(B) >0 $, the map $\mathbb{P}(\cdot| B): \mathcal{F} \rightarrow [0,1]$ is a probability mass.  
+For every set $B \in \mathcal{F}$ s.t. $\mathbb{P}(B) >0 $, the map $\mathbb{P}(\cdot| B): \mathcal{F} \rightarrow [0,1]$ is a probability measure.  
 *Proof:*  $\mathbb{P}(\cdot|B)$ inherits non-negativity, normality and sigma-additivity from $\mathbb{P}$.
 
 The following notebook visualizes an example of [conditional probability](https://elyse-winstral.github.io/script/cond_prob_widget.html). 
@@ -118,7 +118,7 @@ X =
 \end{cases}
 $$
 
-&nbsp; &nbsp; and $Y$ is given as follows $Y:\lbrace 1,2,3,4,5,6\rbrace = \Omega \rightarrow \Omega' \supseteq A \cup B \cup C$
+&nbsp; &nbsp; and $Y$ is given as follows $Y:\lbrace 1,2,3,4,5,6\rbrace = \Omega \rightarrow \Omega' \ni A \cup B \cup C$ 
 
 $$
 Y = 
@@ -130,10 +130,13 @@ Y =
     \end{align*}
 \end{cases}
 $$
-
+<!--
+&= \sigma\lbrace\underbrace{\lbrace1\rbrace}_{Y^{-1}(A)}, \underbrace{\lbrace2,3\rbrace}_{Y^{-1}(B)}, \underbrace{\lbrace4,5,6\rbrace}_{Y^{-1}(C)}, \underbrace{\lbrace1,2,3\rbrace}_{Y^{-1}(A \cup B)}, \underbrace{\lbrace1,4,5,6\rbrace}_{Y^{-1}(A \cup C)}, \underbrace{\lbrace2,3,4,5,6\rbrace}_{Y^{-1}(B \cup C)}, \underbrace{\emptyset}_{Y^{-1}(\emptyset)}, \underbrace{\Omega }_{Y^{-1}(A \cup B \cup C)}\rbrace   
+\\
+-->
 $$
 \begin{align*}
-\sigma(Y) &= \sigma\lbrace\underbrace{\lbrace1\rbrace}_{Y^{-1}(A)}, \underbrace{\lbrace2,3\rbrace}_{Y^{-1}(B)}, \underbrace{\lbrace4,5,6\rbrace}_{Y^{-1}(C)}, \underbrace{\lbrace1,2,3\rbrace}_{Y^{-1}(A \cup B)}, \underbrace{\lbrace1,4,5,6\rbrace}_{Y^{-1}(A \cup C)}, \underbrace{\lbrace2,3,4,5,6\rbrace}_{Y^{-1}(B \cup C)}, \underbrace{\emptyset}_{Y^{-1}(\emptyset)}, \underbrace{\Omega }_{Y^{-1}(A \cup B \cup C)}\rbrace   
+\sigma(Y) &= \sigma \lbrace Y^{-1}(A), Y^{-1}(B), Y^{-1}(C), Y^{-1}(A \cup B), Y^{-1}(A \cup C), Y^{-1}(B \cup C), \underbrace {Y^{-1}(\emptyset)}_{Y^{-1}(A \cap B), Y^{-1}(A \cup B \cap C), \dots}, Y^{-1}(A \cup B \cup C)  \rbrace
 \\
 &=\lbrace\lbrace1\rbrace  ,\lbrace2,3\rbrace  ,\lbrace4,5,6\rbrace  ,\lbrace1,2,3\rbrace  ,\lbrace1,4,5,6\rbrace  ,\lbrace2,3,4,5,6\rbrace  , \emptyset, \Omega\rbrace  
 \end{align*} 
@@ -169,13 +172,11 @@ f_{X|Y} = \begin{cases}
 \end{cases}
 $$
 
-$\{45 \}$
-
 &nbsp; &nbsp; And finally, what is the probability that $X = E$ given $Y$:  $\mathbb{P}(X=x|Y)$?
 
 $$
 \begin{align*}
-\mathbb{P}(X = E | \sigma(Y)) &= \sum_{x \in\lbrace2,4,6\rbrace}f_{X|Y}(x|Y) = f_{X|Y}(E, Y) \\
+\mathbb{P}(X = E | \sigma(Y)) &= \sum_{x = E}f_{X|Y}(x|Y) = f_{X|Y}(E, Y) \\
 &= \overbrace{\mathbb{P}(X = E | Y = A)}^{f_{X|Y}(E,A)}\mathbb{1}_{Y = A} + \mathbb{P}(X = E | Y = B)\mathbb{1}_{Y = B} + \mathbb{P}(X = E | Y = C)\mathbb{1}_{Y = C}\\
 &= 0 + 1/2 \cdot \mathbb{1}_{Y = B} + 2/3 \cdot \mathbb{1}_{Y = C}
 \end{align*}
@@ -189,7 +190,7 @@ For events $A, B \in \mathcal{F}$ with positive probability, it holds:
 
 $$
 \begin{equation*}
-    P(B|A) = \frac{P(A|B)P(B)}{P(A)}, \qquad f_{Y|X}(y,x) =\frac{f_{X|Y}(x,y)f_Y(Y)}{f_X(x)} 
+    P(B|A) = \frac{P(A|B)P(B)}{P(A)}, \qquad f_{Y|X}(y,x) =\frac{f_{X|Y}(x,y)f_Y(y)}{f_X(x)} 
 \end{equation*}
 $$
 
@@ -300,19 +301,35 @@ $$
 
 The converse problem is also considered important namely, given the probability of receiving a $1$ what is the probability that $1$ was sent? If $\varepsilon$ is relatively small, the sender and receiver can agree on what bit was sent. This is called successful communication. Information theory deals with further questions such as how long a message should be to achieve arbitrarily low error and how many different messages can be sent (channel capacity) with low error.
 
-### Normal Random Walk
-Let $X_i \sim N(0,1)$ for  $i= 1, \dots, n$, iid and $Y_i = \sum_{k=1}^{i}X_k \sim N(0, i)$. What is $P(Y_i \in [-1,1] | Y_{i-1} = y)$?
+### Random Walk
+Let $X_i = \begin{cases} 1 \text{ with prob } p \\ -1 \text{ with prob } 1 - p \end{cases}$ for  $i= 1, \dots, n$, iid and $Y_i = \sum_{k=1}^{i}X_k $. What is $P(Y_i \in [-1,1] | Y_{i-1} = y)$ for $y \in \mathbb{Z}$?
 
 $$
 \begin{align*}
-P(Y_i \in [-1,1]| Y_{i-1} = y) &= P(\sum_{k=1}^i X_k \in [-1,1] | \sum _{k=1}^{i-1} X_k = y) = P(X_i + Y_{i-1} \in [-1,1] | Y_{i-1} = y) \\
-&= P(X_i \in [-1-Y_{i-1}, 1-Y_{i-1}]|Y_{i-1} = y))\\
-&= P(X_i \in [-1-y, 1-y]|Y_{i-1} = y)  \\
-&= P(X_i \in [-1-y, 1-y]) = F_X(1-y)- F_X(-1-y) 
+P(Y_i \in \lbrace-1, 0, 1\rbrace | Y_{i-1} = y) &= P(Y_i \in [-1,1]| Y_{i-1} = y) \\
+&= P(\sum_{k=1}^i X_k \in [-1,1] | \sum _{k=1}^{i-1} X_k = y) = P(X_i + Y_{i-1} \in [-1,1] | Y_{i-1} = y) \\
+&= P(X_i \in [-1-Y_{i-1}, 1-Y_{i-1}]|Y_{i-1} = y)\\
+& = P(X_i \in [-1 -y, 1 - y])\\
+&= P(X_i = - 1 - y)  + P(X_i = 1-y) = 
+    \begin{cases}
+        \begin{align*}
+        1 &\text{ if } y = 0 \\
+        1 - p &\text{ if } y = 2 \\
+        p &\text{ if } y = -2 \\
+        0 &\text{ else}
+        \end{align*}
+    \end{cases}
 \end{align*}
 $$
 
-There is no gain in considering states further in the past:
+There is no gain in considering states further in the past: 
+
+$$
+\sigma(X_1, \dots, X_{i-n}) \subseteq \sigma(X_1, \dots, X_{i-1}) 
+\text{ and } X_i \bot \sigma(X_1, \dots, X_{i-1})
+$$
+
+This can also be shown algebraically:
 
 $$
 \begin{align*}
