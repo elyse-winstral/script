@@ -43,7 +43,7 @@ Source Notebook GitHub location: https://github.com/elyse-winstral/script/blob/m
 
 
 
-This version of conditional probability is rather static- the probability is a fixed value depending on the event we condition on (here: $B$). Additionally, we can't condition on null sets, i.e. if $Y$ is a continuous r.v., we can't condition on $B = \{Y= y\}$. However, we can condition on all events in $\sigma(Y)$. Conditioning on $\sigma$-algebras allows for variable conditional probabilities. (The conditional probability is itself random)
+This version of conditional probability is rather static- the probability is a fixed value depending on the event we condition on (here: $B$). Additionally, we can't condition on null sets, i.e. if $Y$ is a continuous r.v., we can't condition on $B =\lbrace Y= y \rbrace  $. However, we can condition on all events in $\sigma(Y)$. Conditioning on $\sigma$-algebras allows for variable conditional probabilities. (The conditional probability is itself random)
 
 
 > #### Conditional Probability - $\sigma$-algebras:
@@ -56,7 +56,7 @@ This version of conditional probability is rather static- the probability is a f
 >\tag{2}
 >$$
 
-The [conditioned event definition](#conditional-probability---events) is simply a special case of this definition where $\mathcal{G} = \{\emptyset, B, B^c, \Omega \}$. We get: 
+The [conditioned event definition](#conditional-probability---events) is simply a special case of this definition where $\mathcal{G} =\lbrace\emptyset, B, B^c, \Omega \rbrace$. We get: 
 
 $$
 \mathbb{P}(A|\mathcal{G}) = \mathbb{P}(A|B)\mathbb{1}_B + \mathbb{P}(A|B^c) \mathbb{1}_{B^c}
@@ -118,7 +118,7 @@ X =
 \end{cases}
 $$
 
-&nbsp; &nbsp; and $Y$ is given as follows $Y: \{1,2,3,4,5,6\} = \Omega \rightarrow \Omega' \supseteq A \cup B \cup C$
+&nbsp; &nbsp; and $Y$ is given as follows $Y:\lbrace 1,2,3,4,5,6\rbrace = \Omega \rightarrow \Omega' \supseteq A \cup B \cup C$
 
 $$
 Y = 
@@ -133,9 +133,9 @@ $$
 
 $$
 \begin{align*}
-\sigma(Y) &= \sigma\{\underbrace{\{1\}}_{Y^{-1}(A)}, \underbrace{\{2,3\}}_{Y^{-1}(B)}, \underbrace{\{4,5,6\}}_{Y^{-1}(C)}, \underbrace{\{1,2,3\} }_{Y^{-1}(A \cup B)}, \underbrace{\{1,4,5,6\} }_{Y^{-1}(A \cup C)}, \underbrace{\{2,3,4,5,6\} }_{Y^{-1}(B \cup C)}, \underbrace{\emptyset}_{Y^{-1}(\emptyset)}, \underbrace{\Omega }_{Y^{-1}(A \cup B \cup C)}\} 
+\sigma(Y) &= \sigma\lbrace\underbrace{\lbrace1\rbrace}_{Y^{-1}(A)}, \underbrace{\lbrace2,3\rbrace}_{Y^{-1}(B)}, \underbrace{\lbrace4,5,6\rbrace}_{Y^{-1}(C)}, \underbrace{\lbrace1,2,3\rbrace}_{Y^{-1}(A \cup B)}, \underbrace{\lbrace1,4,5,6\rbrace}_{Y^{-1}(A \cup C)}, \underbrace{\lbrace2,3,4,5,6\rbrace}_{Y^{-1}(B \cup C)}, \underbrace{\emptyset}_{Y^{-1}(\emptyset)}, \underbrace{\Omega }_{Y^{-1}(A \cup B \cup C)}\rbrace   
 \\
-&= \{\{1\}, \{2,3\}, \{4,5,6\},\{1,2,3\}, \{1,4,5,6\},\{2,3,4,5,6\}, \emptyset, \Omega\}
+&=\lbrace\lbrace1\rbrace  ,\lbrace2,3\rbrace  ,\lbrace4,5,6\rbrace  ,\lbrace1,2,3\rbrace  ,\lbrace1,4,5,6\rbrace  ,\lbrace2,3,4,5,6\rbrace  , \emptyset, \Omega\rbrace  
 \end{align*} 
 $$
 
@@ -169,11 +169,13 @@ f_{X|Y} = \begin{cases}
 \end{cases}
 $$
 
+$\{45 \}$
+
 &nbsp; &nbsp; And finally, what is the probability that $X = E$ given $Y$:  $\mathbb{P}(X=x|Y)$?
 
 $$
 \begin{align*}
-\mathbb{P}(X = E | \sigma(Y)) &= \sum_{x \in \{2,4,6\}}f_{X|Y}(x|Y) = f_{X|Y}(E, Y) \\
+\mathbb{P}(X = E | \sigma(Y)) &= \sum_{x \in\lbrace2,4,6\rbrace}f_{X|Y}(x|Y) = f_{X|Y}(E, Y) \\
 &= \overbrace{\mathbb{P}(X = E | Y = A)}^{f_{X|Y}(E,A)}\mathbb{1}_{Y = A} + \mathbb{P}(X = E | Y = B)\mathbb{1}_{Y = B} + \mathbb{P}(X = E | Y = C)\mathbb{1}_{Y = C}\\
 &= 0 + 1/2 \cdot \mathbb{1}_{Y = B} + 2/3 \cdot \mathbb{1}_{Y = C}
 \end{align*}
