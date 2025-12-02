@@ -11,10 +11,9 @@ The following should link to an editable Python notebook about Monte Carlo metho
 check out this [notebook](https://elyse-winstral.github.io/script/notebook2.html) (a different notebook is linked in chapter-nodes to illustrate a more interactive notebook)
 
 
-## Major to do: 
-1. Add a Github tutorial for the students 
-    1. Create an account/ link account with ETH account
-    2. Request GitHub Education access via ETH 
-    3. Script navigation / using copilot in conjunction with script
-    4. (Use in vsc)
-2. 
+## Current work:
+1. Upload and organize repo
+2. Expand lecture material:
+    1. content 
+    2. Jupyter notebooks to marimo notebooks
+    3. marimo visualizations

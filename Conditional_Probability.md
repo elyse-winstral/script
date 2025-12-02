@@ -9,9 +9,9 @@ Let $A$ and $B$ be two events in $(\Omega, \mathcal{F}, \mathbb{P})$. Let's cons
 
 
 
-Furthermore, let $A$ represent the event "walks on average more than 10'000 steps a day" and $B$ represents "owns a dog". If we randomly sample $n$ people from the population and count the number of times $A$ has occured within the sample $n_A$, we know $\frac{n_A}{n} \approx \mathbb{P}(A)$.
+Furthermore, let $A$ represent the event "walks on average more than 10'000 steps a day" and $B$ represent "owns a dog". If we randomly sample $n$ people from the population and count the number of times $A$ has occured within the sample $n_A$, we know $\frac{n_A}{n} \approx \mathbb{P}(A)$.
 
-Now let's imagine we've selected all the people in $B$. Let $\mathbb{P}(A|B)$ denote the probability of $A$ occuring given $B$ has occured. In our example corresponds to asking the question "what are the chances that a dog owner walks more than 10'000 steps on average", or "given that someone owns a dog, what is the probability that they get more than 10'000 steps a day?". What should $\mathbb{P}(A|B)$ be? We could consider only the population of dog owners who walk 10'000+ steps $n_{A \cap B}$ and compare that number with the dog owner population $n_B$. 
+Now let's imagine we've pre-selected all the people in $B$. Let $\mathbb{P}(A|B)$ denote the probability of $A$ occuring given $B$ has occured. In our example, this corresponds to asking the question "what are the chances that a dog owner walks more than 10'000 steps on average", or "given that someone owns a dog, what is the probability that they get more than 10'000 steps a day?". What should $\mathbb{P}(A|B)$ be? We could consider only the population of dog owners who walk 10'000+ steps $n_{A \cap B}$ and compare that number with the dog owner population $n_B$. 
 
 $$
 \frac{n_{A \cap B}}{n_B} = \frac{n_{A \cap B}/n}{n_B/n} \approx \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
@@ -29,11 +29,12 @@ $$
 >\tag{1}
 >$$
 
-
+Assuming an event $B$ has occured, the previous definition shows how to reweight all the other probabilities in the space to reflect this new information. The following lemma shows the updated probability - conditional probability- is still a valid probability measure. 
 
 #### Lemma: 
 For every set $B \in \mathcal{F}$ s.t. $\mathbb{P}(B) >0 $, the map $\mathbb{P}(\cdot| B): \mathcal{F} \rightarrow [0,1]$ is a probability measure.  
 *Proof:*  $\mathbb{P}(\cdot|B)$ inherits non-negativity, normality and sigma-additivity from $\mathbb{P}$.
+
 
 The following notebook visualizes an example of [conditional probability](https://elyse-winstral.github.io/script/cond_prob_widget.html). 
 <!--
@@ -43,7 +44,11 @@ Source Notebook GitHub location: https://github.com/elyse-winstral/script/blob/m
 
 
 
-This version of conditional probability is rather static- the probability is a fixed value depending on the event we condition on (here: $B$). Additionally, we can't condition on null sets, i.e. if $Y$ is a continuous r.v., we can't condition on $B =\lbrace Y= y \rbrace  $. However, we can condition on all events in $\sigma(Y)$. Conditioning on $\sigma$-algebras allows for variable conditional probabilities. (The conditional probability is itself random)
+This version of conditional probability is rather static- the probability is a fixed value depending on the event we condition on (here: $B$). This can be useful when considering specific outcomes of random variables:
+
+Let X be the outcome of a thrown dice, and Y be whether the outcome was even or odd. We can examine fixed events i.e. $P(X = 1 | Y = \text{odd})$. But we can't generally condition on $Y$. i.e. "given we know whether the outcome is even/odd, what is the probability that X is ...", where the solution is not a constant value.  
+
+Additionally, we can't condition on null sets, i.e. if $Y$ is a continuous r.v., we can't condition on $B =\lbrace Y= y \rbrace  $. However, we can condition on all events in $\sigma(Y)$. Conditioning on $\sigma$-algebras allows for variable conditional probabilities. (The conditional probability is itself random)
 
 
 > #### Conditional Probability - $\sigma$-algebras:
@@ -74,13 +79,13 @@ $$
 \end{cases} \\
 $$
 
-Explicitly, the connection between (2) and (1) can be demonstrated:
+We can use [(2)](#conditional-probability----algebras) to derive [(1)](#conditional-probability---events):
 
 $$
-\mathbb{E}(\mathbb{P}(A|\mathcal{G})\mathbb{1}_B) = \int_{\Omega} \mathbb{P}(A|\mathcal{G}) \mathbb{1}_B d\mathbb{P} = \int_B \mathbb{P}(A|B)d\mathbb{P} = \mathbb{P}(A|B)\mathbb{P}(B) = \mathbb{P}(A \cap B)
+\mathbb{P}(A \cap B) = \mathbb{E}(\mathbb{P}(A|\mathcal{G})\mathbb{1}_B) = \int_{\Omega} \mathbb{P}(A|\mathcal{G}) \mathbb{1}_B d\mathbb{P} = \int_B \mathbb{P}(A|B)d\mathbb{P} = \mathbb{P}(A|B)\mathbb{P}(B)
 $$
 
-As mentioned above, we can condition on the $\sigma$-algebra $\sigma(Y)$ for a rv $Y:\Omega \rightarrow \Omega'$. The conditional probability $\mathbb{P}(X \in A|Y) = \mathbb{P}(X \in A|\sigma(Y))$ gives the probability of an outcome of $X$ given prior knowledge of $Y$. The value of this conditional probability depends on the outcome of $Y$, in fact $\mathbb{P}(X \in A|Y)$ is $\sigma(Y)$ measurable and can be understood as a transformation of $Y$. This probability function can be calculated from the joint and marginal probabilities:
+As mentioned above, we can condition on the $\sigma$-algebra $\sigma(Y)$ for a rv $Y$. The conditional probability $\mathbb{P}(X \in A|\sigma(Y))$ (often denoted: $\mathbb{P}(X \in A|Y)$) gives the probability of an outcome of $X$ given prior knowledge of $Y$. The value of this conditional probability depends on the outcome of $Y$, in fact $\mathbb{P}(X \in A|Y)$ is $\sigma(Y)$ measurable and can be understood as a transformation of $Y$. This probability function can be calculated from the joint and marginal probabilities:
 
 
 
@@ -118,7 +123,7 @@ X =
 \end{cases}
 $$
 
-&nbsp; &nbsp; and $Y$ is given as follows $Y:\lbrace 1,2,3,4,5,6\rbrace = \Omega \rightarrow \Omega' \ni A \cup B \cup C$ 
+&nbsp; &nbsp; and $Y$ is given as follows $Y:\lbrace 1,2,3,4,5,6\rbrace = \Omega \rightarrow \Omega' \ni A, B, C$ 
 
 $$
 Y = 
@@ -136,7 +141,7 @@ $$
 -->
 $$
 \begin{align*}
-\sigma(Y) &= \sigma \lbrace Y^{-1}(A), Y^{-1}(B), Y^{-1}(C), Y^{-1}(A \cup B), Y^{-1}(A \cup C), Y^{-1}(B \cup C), \underbrace {Y^{-1}(\emptyset)}_{Y^{-1}(A \cap B), Y^{-1}(A \cup B \cap C), \dots}, Y^{-1}(A \cup B \cup C)  \rbrace
+\sigma(Y) &= \sigma \lbrace Y^{-1}(A), Y^{-1}(B), Y^{-1}(C), Y^{-1}(A \cup B), Y^{-1}(A \cup C), Y^{-1}(B \cup C), \underbrace {Y^{-1}(\emptyset)}_{Y^{-1}(A \cap B), Y^{-1}((A \cup B) \cap C), \dots}, Y^{-1}(A \cup B \cup C)  \rbrace
 \\
 &=\lbrace\lbrace1\rbrace  ,\lbrace2,3\rbrace  ,\lbrace4,5,6\rbrace  ,\lbrace1,2,3\rbrace  ,\lbrace1,4,5,6\rbrace  ,\lbrace2,3,4,5,6\rbrace  , \emptyset, \Omega\rbrace  
 \end{align*} 
@@ -208,7 +213,7 @@ $$
 P(A|B) = \frac{P(A \cap B)}{P(B)} = P(A)
 $$
 
-In words: $B$ has no effect on $A$. Note: disjoint events and independent events are very different. The aforementioned [notebook](https://elyse-winstral.github.io/script/cond_prob_widget.html) shows an example of independent events. 
+In words: conditioning on $B$ has no effect on $A$. Note: disjoint events and independent events are very different. The aforementioned [notebook](https://elyse-winstral.github.io/script/cond_prob_widget.html) shows an example of independent events. 
 <!--
 Referencing notebook: docs/cond_prob_widget.py
 Source Notebook GitHub location: https://github.com/elyse-winstral/script/blob/main/docs/cond_prob_widget.py
