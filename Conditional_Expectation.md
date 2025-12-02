@@ -134,7 +134,7 @@ Interestingly, this is exactly $\mathbb{E}(X)$. This isn't a coincidence. Later,
 We see there is some exchange of information happening between $X$ and $Y$. For example, if $Y = 10$, we know $X$ must be $0$. Is there a way to transform $Y$ (i.e. $g(Y)$) such that we can get the most amount of information about $X$? 
 
 ### Example - Doctor appointments and age
-MAKE A MARIMO NOTEBOOK?
+MAKE A MARIMO NOTEBOOK
 
 ## Conditional Expectation - $\sigma$-algebras
 Analogously to conditional probability, conditonal expectation wrt. random variables are a special case of conditional expectation wrt. $\sigma$-algebras. The notation $\mathbb{E}(X|Y)$ is again another way of writing $\mathbb{E}(X|\sigma(Y))$. $X$ may not be $\sigma(Y)$ measurable. Going back to the dice example, we see exactly this situation:
@@ -173,6 +173,8 @@ Because $\sigma(X) \subset \mathcal{F}$, $L^2(\Omega, \sigma(X), P)$ is a (close
 
 Hence, the conditional expectation is the **orthogonal projection** onto the subspace of $\sigma(Y)$ measurable random variables. More generally put, the conditional expectation is the orthogonal projection onto the subspace of $\mathcal{G}$ - measurable random variables. We can see the orthogonal projection fulfills the definitive property of conditional expectation. 
 
+This notebook provides an example of what the conditional expectation can look like. [Here](https://elyse-winstral.github.io/script/conditional_expectation_sigma_algebra.html)
+
 ### Tower Property
 For any event $B \in \mathcal{G}$, the conditional expectation is by definition the almost surely unique solution to: 
 
@@ -193,7 +195,9 @@ $$
 \mathbb{E}( \mathbb{E}(X | \mathcal{G}) \mathbb{1}_\Omega) = \mathbb{E}( X \mathbb{1}_\Omega) = \mathbb{E}(X)
 $$
 
-For $\emptyset$:  $\mathbb{E}(X \mathbb{1}_\emptyset) = \mathbb{E}( \mathbb{E}(X) \mathbb{1}_{\emptyset})$ arbitrarily ($P(\mathbb{1}_{\emptyset} = 1) = 0$). 
+For $\emptyset$:  
+
+$\mathbb{E}(X \mathbb{1}_\emptyset) = \mathbb{E}( \mathbb{E}(X) \mathbb{1}_{\emptyset})$ arbitrarily ($P(\mathbb{1}_{\emptyset} = 1) = 0$). 
 
 Therefore, $\mathbb{E}(X | \mathcal{G}) = \mathbb{E}(X)$.
 
@@ -225,7 +229,6 @@ $$
 \mathbb{E}((Y - g(X))^2) &\\ 
 &= \mathbb{E}((Y - \mathbb{E}(Y|X))^2) + \mathbb{E}((\mathbb{E}(Y|X) - g(X))^2) \\
 & + 2\mathbb{E}(Y - \mathbb{E}(Y|X))(\mathbb{E}(Y|X) - g(X))\\
-
 \end{align*}
 $$
 
