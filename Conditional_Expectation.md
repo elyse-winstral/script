@@ -131,7 +131,7 @@ $$
 
 Interestingly, this is exactly $\mathbb{E}(X)$. This isn't a coincidence. Later, we'll look at this property in more detail.
 
-We see there is some exchange of information happening between $X$ and $Y$. For example, if $Y = 10$, we know $X$ must be $0$. Is there a way to transform $Y$ (i.e. $g(Y)$) such that we can get the most amount of information about $X$? 
+We see there is some exchange of information happening between $X$ and $Y$. For example, if $Y = 10$, we know $X$ must be $0$. Is there a way to transform $Y$ (i.e. $g(Y)$ ) such that we can get the most amount of information about $X$? 
 
 ### Example - German Tanks
 Explore the [tanks notebook](https://elyse-winstral.github.io/script/tanks.html) to see how statistical inference can be done.
@@ -206,7 +206,9 @@ $$
 
 For $\emptyset$:  
 
-$\mathbb{E}(X \mathbb{1}_\emptyset) = \mathbb{E}( \mathbb{E}(X) \mathbb{1}_{\emptyset})$ arbitrarily ($P(\mathbb{1}_{\emptyset} = 1) = 0$). 
+$$
+\mathbb{E}(X \mathbb{1}_\emptyset) = \mathbb{E}( \mathbb{E}(X) \mathbb{1}_{\emptyset}) \text{  arbitrarily (} P(\mathbb{1}_{\emptyset} = 1) = 0 \text{).}
+$$
 
 Therefore, $\mathbb{E}(X | \mathcal{G}) = \mathbb{E}(X)$.
 
