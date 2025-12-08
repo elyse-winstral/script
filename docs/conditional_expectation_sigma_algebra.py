@@ -1,5 +1,19 @@
 import marimo
 
+'''
+Conceptual Overview:
+
+This notebook gives an interactive visualization of the conditional expectation. The example uses the Lebesgue measure. The Lebesgue measure in lower dimensions (1, 2, 3) coincides exactly with the standard measure of length, area, and volume.
+
+The variable X is defined on the corresponding probability space: P(X \in A) = length(A). When we take the conditional expectation, we project our measure onto the coarsersub-sigma algebra. This corresponds to piecewise constant approximations of X. The finer the sigma algebra (the more intervals) the closer the projection gets to X. n is the size of the partition that generates the sigma algebra $\mathcal{G}$. The smaller n, the coarser the sub-sigma algebra. Conceptually, this can be understood as: by taking the conditional expectation wrt to $\mathcal{G}$, we can only know which set in $\mathcal{G}$ X falls in. The finer the sigma algebra, the smaller the sets are. 
+
+Important takeaways are: 
+    - Averaging over the projection results in the average of X (tower property)
+    - X may vary a lot over sets that are "invisible" to $\mathcal{G}$, when projecting onto $\mathcal{G}$ / conditioning on $\mathcal{G}$ this variation is averaged out
+    - the finer the sigma algebra becomes, the more detail we recover
+
+'''
+
 __generated_with = "0.17.8"
 app = marimo.App(width="medium")
 

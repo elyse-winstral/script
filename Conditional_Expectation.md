@@ -133,8 +133,13 @@ Interestingly, this is exactly $\mathbb{E}(X)$. This isn't a coincidence. Later,
 
 We see there is some exchange of information happening between $X$ and $Y$. For example, if $Y = 10$, we know $X$ must be $0$. Is there a way to transform $Y$ (i.e. $g(Y)$) such that we can get the most amount of information about $X$? 
 
-### Example - Doctor appointments and age
-MAKE A MARIMO NOTEBOOK
+### Example - German Tanks
+Explore the [tanks notebook](https://elyse-winstral.github.io/script/tanks.html) to see how statistical inference can be done.
+<!--
+Referencing notebook: docs/tanks.py
+Source Notebook GitHub location: https://github.com/elyse-winstral/script/blob/main/docs/tanks.py
+-->
+
 
 ## Conditional Expectation - $\sigma$-algebras
 Analogously to conditional probability, conditonal expectation wrt. random variables are a special case of conditional expectation wrt. $\sigma$-algebras. The notation $\mathbb{E}(X|Y)$ is again another way of writing $\mathbb{E}(X|\sigma(Y))$. $X$ may not be $\sigma(Y)$ measurable. Going back to the dice example, we see exactly this situation:
@@ -174,6 +179,10 @@ Because $\sigma(X) \subset \mathcal{F}$, $L^2(\Omega, \sigma(X), P)$ is a (close
 Hence, the conditional expectation is the **orthogonal projection** onto the subspace of $\sigma(Y)$ measurable random variables. More generally put, the conditional expectation is the orthogonal projection onto the subspace of $\mathcal{G}$ - measurable random variables. We can see the orthogonal projection fulfills the definitive property of conditional expectation. 
 
 This notebook provides an example of what the conditional expectation can look like. [Here](https://elyse-winstral.github.io/script/conditional_expectation_sigma_algebra.html)
+<!--
+Referencing notebook: docs/conditional_expectation_sigma_algebra.py
+Source Notebook GitHub location: https://github.com/elyse-winstral/script/blob/main/docs/conditional_expectation_sigma_algebra.py
+-->
 
 ### Tower Property
 For any event $B \in \mathcal{G}$, the conditional expectation is by definition the almost surely unique solution to: 
@@ -210,7 +219,7 @@ $$
 The second tower property in terms of projections can be thought of as: the projection of the projection is the simple projection. 
 
 ### Non-Linear Regression
-Oftentimes, we want to use collected data to estimate the another dataset, for example using age to predict how often someone visits the doctor. We consider $(X,Y)$, $Y \in L^2(\Omega)$ with the goal: use $X$ to approximate $Y$. (In supervised learning, we work with the empirical distribution of a sample $(X_1, Y_1), \dots, (X_n, Y_n)$) We define an expected loss function:
+Oftentimes, we want to use collected data to estimate the another dataset, for example using age to predict how often someone visits the doctor. We consider $(X,Y)$, $Y \in L^2(\Omega)$ with the goal: use $X$ to approximate $Y$. (In supervised learning, we work with the empirical distribution of a sample $(X_1, Y_1), \dots, (X_n, Y_n)$ ) We define an expected loss function:
 
 $$
 \mathbb{E}((Y - g(X))^2)
