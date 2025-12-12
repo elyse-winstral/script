@@ -307,7 +307,16 @@ $$
 The converse problem is also considered important namely, given the probability of receiving a $1$ what is the probability that $1$ was sent? If $\varepsilon$ is relatively small, the sender and receiver can agree on what bit was sent. This is called successful communication. Information theory deals with further questions such as how long a message should be to achieve arbitrarily low error and how many different messages can be sent (channel capacity) with low error.
 
 ### Random Walk
-Let $X_i = \begin{cases} 1 \text{ with prob } p \\ -1 \text{ with prob } 1 - p \end{cases}$ for  $i= 1, \dots, n$, iid and $Y_i = \sum_{k=1}^{i}X_k $. What is $P(Y_i \in [-1,1] | Y_{i-1} = y)$ for $y \in \mathbb{Z}$?
+Let 
+
+$$
+X_i = \begin{cases} 
+    1 \text{ with prob } p \\
+    -1 \text{ with prob } 1 - p 
+    \end{cases}
+$$
+
+for  $i= 1, \dots, n$, iid and $Y_i = \sum_{k=1}^{i}X_k $. What is $P(Y_i \in [-1,1] | Y_{i-1} = y)$ for $y \in \mathbb{Z}$?
 
 $$
 \begin{align*}
