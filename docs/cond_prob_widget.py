@@ -59,9 +59,8 @@ def _(anywidget, mo, traitlets):
                         },
                     },
                     modifiers: [
-                        interact.modifiers.restrictRect({
-                            restriction: 'parent',
-                            endOnly: true
+                        interact.modifiers.restrictEdges({
+                                outer: 'parent',
                         })
                     ]
                 })
@@ -88,12 +87,11 @@ def _(anywidget, mo, traitlets):
                     },
                     modifiers: [
                         interact.modifiers.restrictSize({
-                            min: { width: 20, height: 20 },
+                            min: { width: 10, height: 10 },
                             max: { width: 400, height: 400 },
                         }),
-                        interact.modifiers.restrictRect({
-                            restriction: 'parent',
-                            endOnly: true
+                        interact.modifiers.restrictEdges({
+                                outer: 'parent',
                         })
                     ],
                 });
@@ -124,15 +122,15 @@ def _(anywidget, mo, traitlets):
         }
         export default { render };
         """
-        x_a = traitlets.Float(33).tag(sync=True)
-        y_a = traitlets.Float(16.5).tag(sync=True)
-        width_a = traitlets.Float(150).tag(sync=True)
-        height_a = traitlets.Float(150).tag(sync=True)
+        x_a = traitlets.Float(127.5).tag(sync=True)
+        y_a = traitlets.Float(0).tag(sync=True)
+        width_a = traitlets.Float(45).tag(sync=True)
+        height_a = traitlets.Float(300).tag(sync=True)
 
-        x_b = traitlets.Float(98).tag(sync=True)
-        y_b = traitlets.Float(66.5).tag(sync=True)
-        width_b = traitlets.Float(170).tag(sync=True)
-        height_b = traitlets.Float(200).tag(sync=True)
+        x_b = traitlets.Float(0).tag(sync=True)
+        y_b = traitlets.Float(120).tag(sync=True)
+        width_b = traitlets.Float(300).tag(sync=True)
+        height_b = traitlets.Float(60).tag(sync=True)
 
     prob_widget = mo.ui.anywidget(ConditionalProbWidget())
     return (prob_widget,)
@@ -144,6 +142,20 @@ def _(mo):
     # Conditional Probability: $P(A|B)$
 
     Drag and resize squares $A$ and $B$ to see how the conditional probability $P(A|B)$ changes. The default $A$ and $B$ represent independent events: $P(A|B) = P(A)$. Note, independence is not restricted to this specific configuration.
+    """)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""
+    ### Probability and area
+
+    When building an understanding of probability theory, it can be very helpful to picture the probability as the area. Probability and area (Lebesgue measure, denoted $\lambda(\cdot)$) are both metrics- probability *measures* the chance of an event occuring. There is even a special case where the two metrics are identical:
+
+    Let $\Omega = [0,1] \times [0,1]$ be the unit square. The Lebesgue measure of $\Omega$ is $\lambda(\Omega) = (1-0)\cdot(1-0) = 1$. Let $\mathcal{F} = \mathcal{B}([0,1] \times [0,1])$ and $\mathbb{P}$ the uniform probability measure over $\mathcal{F}$. So for our probability space $(\Omega, \mathcal{F}, \mathbb{P})$ the probability of any event in that space is its area:
+
+    Put plainly, for $A \in \mathcal{F}$, $\mathbb{P}(A) =$ Area$(A) = \lambda(A)$.
     """)
     return
 
@@ -203,20 +215,64 @@ def _(mo, prob_widget):
 
     #mo.hstack([results, mo.Html(prob_bar_html)], justify="space-around")
     mo.hstack([prob_widget, mo.vstack([mo.Html(prob_bar_html), results], align='start')], justify="start")
-
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ### Probability and area
+ 
+    """)
+    return
 
-    When building an understanding of probability theory, it can be very helpful to picture the probability as the area. Probability and area (Lebesgue measure, denoted $\lambda(\cdot)$) are both metrics- probability *measures* the chance of an event occuring. There is even a special case where the two metrics are identical:
 
-    Let $\Omega = [0,1] \times [0,1]$ be the unit square. The Lebesgue measure of $\Omega$ is $\lambda(\Omega) = (1-0)\cdot(1-0) = 1$. Let $\mathcal{F} = \mathcal{B}([0,1] \times [0,1])$ and $\mathbb{P}$ the uniform probability measure over $\mathcal{F}$. So for our probability space $(\Omega, \mathcal{F}, \mathbb{P})$ the probability of any event in that space is its area:
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Visual independence
 
-    Put plainly, for $A \in \mathcal{F}$, $\mathbb{P}(A) =$ Area$(A) = \lambda(A)$.
+    As mentioned earlier, independence isn't restricted to this specific configuration. However, something interesting happens if you *only* modify the height of $B$- independence is invariant under this transformation. Why is that? Think about how conditional independence is derived:
+
+    $P(A | B) = \frac{P(A \cap B)}{P(B)} = \frac{ \text{w}_A \text{h}_B}{\text{w}_B \text{h}_B} \stackrel{!}{=} \text{w}_A \text{h}_A = P(A)$
+
+    Moving $A$ and $B$ also doesn't influence the relationship between the intersection and the individual areas in this setup.
+
+    What happens when $A$ and $B$ look different, i.e. if their dimensions are strictly less than the dimensions of $\Omega$? When does independence occur?
+
+
+    ## Independence Properties
+
+    ### Symmetry
+
+    This visual only examines $P(A|B)$, but what about $P(B|A)$? We've explored how the configurations interact in relation to the former. What may not be clear is the equivalence: if $P(A|B) = P(A)$ why does $P(B|A) = P(B)$ also hold?
+
+    We can easily rewrite the definitive equation to easily see this equivalence:
+
+    $P(A \cap B) = P(A) P(B)$
+
+
+    ### Self Independence
+
+    One final consideration: make $A$ and $B$ identical, what do you observe? How does this relate to the definition?
+
+    $P(A \cap A) = P(A) P(A)$
+
+    What events $A$ fulfil this property?
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Extra mile - extending use of $\Omega$
+
+    talk about how this can relate to continuous r.v.s, joint vs marginal events visually, independence between the two shapes the space
+
+
+    We can imagine this setup representing two independent random variables $X, Y$, uniformly distributed over $[0,1]$. ($X$ models the $x$-axis, and $Y$ the $y$-axis). What can be said about events that span the entire width or height of $\Omega$?
+
+    Let $A = [0,1] \times [0.25, 0.75]$. What is $P(X < x | A), P(A | X < x)$?
     """)
     return
 
