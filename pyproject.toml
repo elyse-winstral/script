@@ -1,0 +1,10 @@
+[project]
+name = "script"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "anywidget>=0.9.21",
+    "marimo>=0.19.5",
+]
